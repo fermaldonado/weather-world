@@ -15,12 +15,12 @@ let getInfo = async({address}) => {
 		let coords = await place.getPlaceLatLng(address);
 		let temp = await weather.getWeather(coords.lat, coords.lng);
 
-		return `Weather in ${ coords.address } is ${ temp } `;
+		return `Weather in ${ coords.dir } is ${ temp } `;
 	}catch(e){
-		console.log(`Can't get weather in ${ address }`);
+		return `Can't get weather in ${ address }`;
 	}
 }
 
 getInfo(argv)
-	.then(message => console.log(message))
-	.catch(e => console.log(e));
+	.then(console.log)
+	.catch(console.log);
